@@ -2,6 +2,7 @@ package main
 
 import (
 	"aoc24/day01"
+	"aoc24/day02"
 	"bufio"
 	"fmt"
 	"io"
@@ -18,8 +19,7 @@ type Solver interface {
 
 var solvers = map[string]Solver{
 	"1": &day01.Solver{},
-	// Add more days as you implement them
-	// "2": &day02.Solver{},
+	"2": &day02.Solver{},
 }
 
 func main() {
