@@ -3,6 +3,7 @@ package main
 import (
 	"aoc24/day01"
 	"aoc24/day02"
+	"aoc24/day03"
 	"bufio"
 	"fmt"
 	"io"
@@ -20,6 +21,7 @@ type Solver interface {
 var solvers = map[string]Solver{
 	"1": &day01.Solver{},
 	"2": &day02.Solver{},
+	"3": &day03.Solver{},
 }
 
 func main() {
