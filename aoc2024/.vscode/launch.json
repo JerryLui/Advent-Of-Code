@@ -7,7 +7,7 @@
             "request": "launch",
             "mode": "debug",
             "program": "${workspaceFolder}",
-            "args": ["3", "2"]
+            "args": ["4", "1"]
         },
     ]
 }
