@@ -6,6 +6,7 @@ import (
 	"aoc24/day03"
 	"aoc24/day04"
 	"aoc24/day05"
+	"aoc24/day06"
 	"bufio"
 	"fmt"
 	"io"
@@ -26,6 +27,7 @@ var solvers = map[string]Solver{
 	"3": &day03.Solver{},
 	"4": &day04.Solver{},
 	"5": &day05.Solver{},
+	"6": &day06.Solver{},
 }
 
 func main() {
@@ -36,6 +38,7 @@ func main() {
 
 	day := os.Args[1]
 	part := os.Args[2]
+	isTest := len(os.Args) > 3 && os.Args[3] == "test"
 
 	solver, exists := solvers[day]
 	if !exists {
@@ -43,7 +46,7 @@ func main() {
 		os.Exit(1)
 	}
 
-	input, err := readInput(day)
+	input, err := readInput(day, isTest)
 	if err != nil {
 		fmt.Fprintf(os.Stderr, "Error reading input: %v\n", err)
 		os.Exit(1)
@@ -63,16 +66,19 @@ func main() {
 	fmt.Println(result)
 }
 
-func readInput(day string) ([]string, error) {
+func readInput(day string, readTest bool) ([]string, error) {
 	dayNum, err := strconv.Atoi(day)
 	if err != nil {
 		return nil, fmt.Errorf("invalid day number: %w", err)
 	}
 
-	path := fmt.Sprintf("day%02d/input.txt", dayNum)
-	if _, err := os.Stat(path); os.IsNotExist(err) {
-		if err := downloadInput(dayNum, path); err != nil {
-			return nil, fmt.Errorf("downloading input: %w", err)
+	path := fmt.Sprintf("day%02d/input_test.txt", dayNum)
+	if !readTest {
+		path = fmt.Sprintf("day%02d/input.txt", dayNum)
+		if _, err := os.Stat(path); os.IsNotExist(err) {
+			if err := downloadInput(dayNum, path); err != nil {
+				return nil, fmt.Errorf("downloading input: %w", err)
+			}
 		}
 	}
 
