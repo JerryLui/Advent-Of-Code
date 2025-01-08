@@ -7,6 +7,7 @@ import (
 	"aoc24/day04"
 	"aoc24/day05"
 	"aoc24/day06"
+	"aoc24/day07"
 	"bufio"
 	"fmt"
 	"io"
@@ -28,6 +29,7 @@ var solvers = map[string]Solver{
 	"4": &day04.Solver{},
 	"5": &day05.Solver{},
 	"6": &day06.Solver{},
+	"7": &day07.Solver{},
 }
 
 func main() {

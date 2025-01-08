@@ -29,3 +29,12 @@ func All[T comparable](a []T) bool {
 	}
 	return true
 }
+
+func Any[T comparable](a []T, f func(T) bool) bool {
+	for _, v := range a {
+		if f(v) {
+			return true
+		}
+	}
+	return false
+}
